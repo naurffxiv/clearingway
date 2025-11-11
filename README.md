@@ -19,12 +19,13 @@ It can be configured with the `config.yaml` file found in this repository.
 
 Clearingway requires the following environment variables to start:
 
-* **DISCORD_TOKEN**: You have to create a [Discord bot for Clearingway](https://discord.com/developers/applications). Once you've done so, you can add the bot token here.
-* **FFLOGS_CLIENT_ID**: The client ID from [fflogs](https://www.fflogs.com/api/clients/).
-* **FFLOGS_CLIENT_SECRET**: The client secret from [fflogs](https://www.fflogs.com/api/clients/).
+- **DISCORD_TOKEN**: You have to create a [Discord bot for Clearingway](https://discord.com/developers/applications). Once you've done so, you can add the bot token here.
+- **FFLOGS_CLIENT_ID**: The client ID from [fflogs](https://www.fflogs.com/api/clients/).
+- **FFLOGS_CLIENT_SECRET**: The client secret from [fflogs](https://www.fflogs.com/api/clients/).
 
 ## Directory Structure
 
+```
 .
 ├── cmd/
 │   └── app/
@@ -63,6 +64,7 @@ Clearingway requires the following environment variables to start:
 │        ├── ffxiv/              // FFXIV-specific utilities
 │        └── util/               // Common utilities
 │  . . .
+```
 
 ## About Each Package
 
@@ -97,7 +99,7 @@ The Domain layer is the layer we put pure business logic, structs, and methods. 
 **Testing:** The Domain layer should test with pure unit tests, due to the requirement of no dependencies we wont need to mock anything and everything in the Domain layer should all work in isolation, so any methods or rules added should be tested.
 
 #### `entities/`
-The Entities package holds the definitions of the business nouns and the rules they must follow. Every definition must be stable so the rest of the codebase can depend on it. 
+The Entities package holds the definitions of the business nouns and the rules they must follow. Every definition must be stable so the rest of the codebase can depend on it.
 
 Every file within the Entities package contains a single business type with its state and the invariants that state must obey. The invariants should be enforced with factories and if pure methods are needed they would belong here as well.
 
@@ -145,7 +147,7 @@ The UI layer is the UI of the bot, any logic that relates to what a user interac
 A declarative catalog of all slash commands the bot exposes: their names, descriptions, options, permissions, and any metadata the registrar needs. We don’t handle events or logic here, we just define the specs.
 
 #### `handlers/`
-The Handlers package holds the code that reacts to Discord interactions and translates them into application layer requests. They then turn the results into user-facing replies. 
+The Handlers package holds the code that reacts to Discord interactions and translates them into application layer requests. They then turn the results into user-facing replies.
 
 #### `menus/`
 The Menus package contains the pure presentation builders, taking plain data and returning Discord ready payloads; embeds, components, content strings.
