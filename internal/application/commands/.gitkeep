@@ -1,0 +1,1 @@
+Here we keep the write-side use-cases, in other words, actions the system performs when a user asks for something to change. A command takes a request, coordinates domain rules, calls external systems through ports and returns a result.

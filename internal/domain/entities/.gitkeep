@@ -1,0 +1,1 @@
+The Entities package holds the definitions of the business nouns and the rules they must follow. Every definition must be stable so the rest of the codebase can depend on it. 

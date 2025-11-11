@@ -1,0 +1,1 @@
+A declarative catalog of all slash commands the bot exposes: their names, descriptions, options, permissions, and any metadata the registrar needs. We don’t handle events or logic here, we just define the specs.

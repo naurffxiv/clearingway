@@ -1,0 +1,1 @@
+Services are the interfaces that describe what the application needs done by external systems, along with some tiny shared types used by the interfaces.

@@ -1,0 +1,3 @@
+Rules and calculations that span multiple domain nouns but still require no I/O. The place where business policies live when they don’t fit in a single entity. There should be one service per policy, a small, cohesive unit that performs a calculation or decision.
+
+Domain nouns are classified as a service over an entity when the rule combines data from multiple nouns, applies policies/config that aren’t owned by a single noun or needs time windows, comparisons or catalogs that sit outside one entity and is still pure.
