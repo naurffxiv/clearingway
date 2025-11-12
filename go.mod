@@ -1,4 +1,4 @@
-module github.com/Veraticus/clearingway
+module github.com/naurffxiv/clearingway
 
 go 1.25
 
@@ -35,5 +35,4 @@ require (
 	golang.org/x/sys v0.38.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/protobuf v1.36.10 // indirect
-	nhooyr.io/websocket v1.8.17 // indirect
 )

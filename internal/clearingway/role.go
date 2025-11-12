@@ -3,9 +3,9 @@ package clearingway
 import (
 	"fmt"
 
-	"github.com/Veraticus/clearingway/internal/fflogs"
-	"github.com/Veraticus/clearingway/internal/ffxiv"
-	"github.com/Veraticus/clearingway/internal/util"
+	"github.com/naurffxiv/clearingway/internal/fflogs"
+	"github.com/naurffxiv/clearingway/internal/ffxiv"
+	"github.com/naurffxiv/clearingway/internal/util"
 
 	"github.com/bwmarrin/discordgo"
 )

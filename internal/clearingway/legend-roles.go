@@ -8,7 +8,7 @@ import (
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"
 
-	"github.com/Veraticus/clearingway/internal/fflogs"
+	"github.com/naurffxiv/clearingway/internal/fflogs"
 )
 
 func legendRoleString(clearedEncounters *Encounters, rankings *fflogs.Rankings) string {

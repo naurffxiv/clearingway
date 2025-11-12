@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/Veraticus/clearingway/internal/ffxiv"
+	"github.com/naurffxiv/clearingway/internal/ffxiv"
 )
 
 // Rankings contains many rankings for different encounters,

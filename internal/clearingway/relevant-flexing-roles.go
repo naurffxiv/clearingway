@@ -3,7 +3,7 @@ package clearingway
 import (
 	"fmt"
 
-	"github.com/Veraticus/clearingway/internal/fflogs"
+	"github.com/naurffxiv/clearingway/internal/fflogs"
 )
 
 func RelevantFlexingRoles() *Roles {

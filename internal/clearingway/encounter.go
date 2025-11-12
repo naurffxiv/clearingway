@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Veraticus/clearingway/internal/fflogs"
+	"github.com/naurffxiv/clearingway/internal/fflogs"
 )
 
 var UltimateEncounters = &Encounters{

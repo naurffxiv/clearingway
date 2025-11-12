@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/Veraticus/clearingway/internal/ffxiv"
+	"github.com/naurffxiv/clearingway/internal/ffxiv"
 )
 
 type report struct {

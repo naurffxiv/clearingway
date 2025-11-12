@@ -1,9 +1,9 @@
 package clearingway
 
 import (
-	"github.com/Veraticus/clearingway/internal/discord"
-	"github.com/Veraticus/clearingway/internal/fflogs"
-	"github.com/Veraticus/clearingway/internal/ffxiv"
+	"github.com/naurffxiv/clearingway/internal/discord"
+	"github.com/naurffxiv/clearingway/internal/fflogs"
+	"github.com/naurffxiv/clearingway/internal/ffxiv"
 
 	trie "github.com/Vivino/go-autocomplete-trie"
 )
