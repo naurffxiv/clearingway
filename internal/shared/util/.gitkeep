@@ -1,0 +1,1 @@
+General-purpose, side-effect free helpers used everywhere else. String utilities, collections, generic paging/cursor structs, light error helpers, anything else that could be used by everything, it goes here. It should be small and testable.

@@ -1,0 +1,1 @@
+The Handlers package holds the code that reacts to Discord interactions and translates them into application layer requests. They then turn the results into user-facing replies. 
