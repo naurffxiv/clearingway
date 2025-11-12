@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Veraticus/clearingway/internal/discord"
+	"github.com/naurffxiv/clearingway/internal/discord"
 
 	"github.com/bwmarrin/discordgo"
 	"golang.org/x/text/cases"

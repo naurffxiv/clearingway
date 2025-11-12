@@ -15,7 +15,7 @@ import (
 
 	"golang.org/x/oauth2"
 
-	"github.com/Veraticus/clearingway/internal/ffxiv"
+	"github.com/naurffxiv/clearingway/internal/ffxiv"
 
 	"github.com/hasura/go-graphql-client"
 )

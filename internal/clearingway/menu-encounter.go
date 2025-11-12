@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Veraticus/clearingway/internal/discord"
+	"github.com/naurffxiv/clearingway/internal/discord"
 	"github.com/bwmarrin/discordgo"
 )
 

@@ -3,7 +3,7 @@ package clearingway
 import (
 	"fmt"
 
-	"github.com/Veraticus/clearingway/internal/ffxiv"
+	"github.com/naurffxiv/clearingway/internal/ffxiv"
 )
 
 type PhysicalDatacenters struct {

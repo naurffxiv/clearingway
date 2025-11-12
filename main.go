@@ -8,10 +8,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/Veraticus/clearingway/internal/clearingway"
-	"github.com/Veraticus/clearingway/internal/discord"
-	"github.com/Veraticus/clearingway/internal/fflogs"
-	"github.com/Veraticus/clearingway/internal/lodestone"
+	"github.com/naurffxiv/clearingway/internal/clearingway"
+	"github.com/naurffxiv/clearingway/internal/discord"
+	"github.com/naurffxiv/clearingway/internal/fflogs"
+	"github.com/naurffxiv/clearingway/internal/lodestone"
 
 	"gopkg.in/yaml.v3"
 )
