@@ -184,7 +184,7 @@ func clears(c *clearingway.Clearingway) {
 	fmt.Printf("Character %s (%s) clears updated in guild %s.\n", char.Name(), char.World, guild.Name)
 
 	for _, roleText := range roleTexts {
-		fmt.Printf(roleText + "\n")
+		fmt.Printf("%s\n", roleText)
 	}
 }
 
@@ -247,6 +247,6 @@ func prog(c *clearingway.Clearingway) {
 	fmt.Printf("Character %s (%s) prog updated in guild %s.\n", char.Name(), char.World, guild.Name)
 
 	for _, progText := range progTexts {
-		fmt.Printf(progText + "\n")
+		fmt.Printf("%s\n", progText)
 	}
 }
