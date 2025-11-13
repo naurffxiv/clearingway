@@ -39,12 +39,13 @@ func UltimateRepetitionRoles() *Roles {
 						if clears == 1 {
 							return true,
 								fmt.Sprintf(
-									"Cleared " + ult.Name + "... but only once.\nUse `/uncomfy` if you don't want this role.",
+									"Cleared %s... but only once.\nUse `/uncomfy` if you don't want this role.",
+									ult.Name,
 								)
 						}
 					}
 
-					return false, "Cleared " + ult.Name + " more than once."
+					return false, fmt.Sprintf("Cleared %s more than once.", ult.Name)
 				},
 			},
 			{
@@ -76,12 +77,13 @@ func UltimateRepetitionRoles() *Roles {
 						if clears >= ult.TotalWeaponsAvailable {
 							return true,
 								fmt.Sprintf(
-									"Cleared " + ult.Name + " enough times to have every single weapon.",
+									"Cleared %s enough times to have every single weapon.",
+									ult.Name,
 								)
 						}
 					}
 
-					return false, "Has not cleared " + ult.Name + " enough times to have every single weapon."
+					return false, fmt.Sprintf("Has not cleared %s enough times to have every single weapon.", ult.Name)
 				},
 			},
 		}...)
