@@ -356,7 +356,7 @@ func (c *Clearingway) InteractionCreate(s *discordgo.Session, i *discordgo.Inter
 				c.MenuEncounterProcess(s, i, command[2], command[3])
 			default:
 				fmt.Printf("Invalid custom ID received: \"%v\"\n", customID)
-			}	
+			}
 		default:
 			fmt.Printf("Invalid custom ID received: \"%v\"\n", customID)
 		}

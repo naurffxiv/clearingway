@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/naurffxiv/clearingway/internal/ffxiv"
 	"github.com/gocolly/colly"
+	"github.com/naurffxiv/clearingway/internal/ffxiv"
 )
 
 var characterLodestoneUrl = "https://na.finalfantasyxiv.com/lodestone/character/"
