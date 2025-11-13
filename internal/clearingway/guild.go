@@ -3,9 +3,9 @@ package clearingway
 import (
 	"fmt"
 
-	"github.com/naurffxiv/clearingway/internal/ffxiv"
 	trie "github.com/Vivino/go-autocomplete-trie"
 	"github.com/bwmarrin/discordgo"
+	"github.com/naurffxiv/clearingway/internal/ffxiv"
 )
 
 type Guilds struct {
@@ -178,12 +178,12 @@ func (g *Guild) Init(c *ConfigGuild) {
 	}
 
 	if g.MenuEnabled {
-		if (c.ConfigMenuOrder != nil) {
+		if c.ConfigMenuOrder != nil {
 			for _, menuOrder := range c.ConfigMenuOrder {
 				g.Menus.MenuGroups[menuOrder.Name] = menuOrder.Menus
 			}
 		}
-		
+
 		g.InitDiscordMenu()
 		g.MenuRoles = g.Menus.Roles()
 	}
@@ -314,7 +314,7 @@ func (g *Guild) InitDiscordMenu() {
 	for group, _ := range g.Menus.MenuGroups {
 		menuGroupName := "group " + group
 		g.Menus.Autocomplete = append(g.Menus.Autocomplete, &discordgo.ApplicationCommandOptionChoice{
-			Name: menuGroupName,
+			Name:  menuGroupName,
 			Value: menuGroupName,
 		})
 		g.Menus.AutoCompleteTrie.Insert(menuGroupName)

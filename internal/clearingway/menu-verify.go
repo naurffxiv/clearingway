@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/naurffxiv/clearingway/internal/discord"
 	"github.com/bwmarrin/discordgo"
+	"github.com/naurffxiv/clearingway/internal/discord"
 )
 
 // MenuVerifySendModal sends the user a modal that asks for their character's

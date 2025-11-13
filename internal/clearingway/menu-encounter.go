@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/naurffxiv/clearingway/internal/discord"
 	"github.com/bwmarrin/discordgo"
+	"github.com/naurffxiv/clearingway/internal/discord"
 )
 
 const DEFAULT_TITLE = "General"
