@@ -1,12 +1,13 @@
 package main
 
 import (
+	"github.com/naurffxiv/clearingway/config"
 	"github.com/naurffxiv/clearingway/internal/clearingway"
 )
 
 func Config() *clearingway.Clearingway {
 	// ------------------- LOAD ENV -------------------
-	// TODO: Load env from config/
+	_ = config.LoadEnv() // currently unused, will be used to setup clearingway
 
 	// -------------- SETUP CLEARINGWAY ---------------
 	// TODO: Setup clearingway from config/
