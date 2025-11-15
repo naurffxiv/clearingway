@@ -7,6 +7,7 @@ require (
 	github.com/bwmarrin/discordgo v0.29.0
 	github.com/gocolly/colly v1.2.0
 	github.com/hasura/go-graphql-client v0.15.0
+	github.com/joho/godotenv v1.5.1
 	github.com/stretchr/testify v1.7.1
 	golang.org/x/oauth2 v0.33.0
 	golang.org/x/text v0.30.0
