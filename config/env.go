@@ -11,6 +11,7 @@ type Env struct {
 	FFLOGS_CLIENT_ID     string
 	FFLOGS_CLIENT_SECRET string
 	DISCORD_TOKEN        string
+	ENV                  string
 }
 
 func LoadEnv() *Env {
@@ -27,15 +28,15 @@ func LoadEnv() *Env {
 	// -------------- LOAD ENV VARIABLES --------------
 	fflogsClientId, ok := os.LookupEnv("FFLOGS_CLIENT_ID")
 	if !ok {
-		log.Fatalf("FFLOGS_CLIENT_ID is not set in the .env file")
+		log.Fatalf("FFLOGS_CLIENT_ID is not set in the environment")
 	}
 	fflogsClientSecret, ok := os.LookupEnv("FFLOGS_CLIENT_SECRET")
 	if !ok {
-		log.Fatalf("FFLOGS_CLIENT_SECRET is not set in the .env file")
+		log.Fatalf("FFLOGS_CLIENT_SECRET is not set in the environment")
 	}
 	discordToken, ok := os.LookupEnv("DISCORD_TOKEN")
 	if !ok {
-		log.Fatalf("DISCORD_TOKEN is not set in the .env file")
+		log.Fatalf("DISCORD_TOKEN is not set in the environment")
 	}
 
 	// -------------- RETURN ENV --------------
@@ -43,5 +44,6 @@ func LoadEnv() *Env {
 		FFLOGS_CLIENT_ID:     fflogsClientId,
 		FFLOGS_CLIENT_SECRET: fflogsClientSecret,
 		DISCORD_TOKEN:        discordToken,
+		ENV:                  env,
 	}
 }

@@ -7,7 +7,7 @@ import (
 
 func Config() *clearingway.Clearingway {
 	// ------------------- LOAD ENV -------------------
-	_ = config.LoadEnv() // Currently unused, required to setup clearingway
+	_ = config.LoadEnv() // currently unused, will be used to setup clearingway
 
 	// -------------- SETUP CLEARINGWAY ---------------
 	// TODO: Setup clearingway from config/
