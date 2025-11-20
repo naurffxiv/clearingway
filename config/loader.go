@@ -1,10 +1,13 @@
 package config
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
+
+	"google.golang.org/appengine/log"
 
 	configTypes "github.com/naurffxiv/clearingway/config/types"
 )
@@ -47,10 +50,11 @@ func (cfg *BotConfig) GetMenuByName(name string) *configTypes.MenuConfig {
 	return nil
 }
 
-func (cfg *BotConfig) parseMenuConfig(path string, data []byte) error {
+func (cfg *BotConfig) parseMenuConfig(ctx context.Context, path string, data []byte) error {
 	var menuConfig configTypes.MenuConfig
 	if err := json.Unmarshal(data, &menuConfig); err != nil {
-		return fmt.Errorf("error unmarshaling menu config file %s: %w", path, err)
+		log.Errorf(ctx, "error unmarshaling menu config file %s: %v", path, err)
+		return err
 	}
 	if cfg.Menus == nil {
 		cfg.Menus = make(map[string]*configTypes.MenuConfig)
@@ -59,10 +63,11 @@ func (cfg *BotConfig) parseMenuConfig(path string, data []byte) error {
 	return nil
 }
 
-func (cfg *BotConfig) parseEncounterConfig(path string, data []byte) error {
+func (cfg *BotConfig) parseEncounterConfig(ctx context.Context, path string, data []byte) error {
 	var encounterConfig configTypes.EncounterConfig
 	if err := json.Unmarshal(data, &encounterConfig); err != nil {
-		return fmt.Errorf("error unmarshaling encounter config file %s: %w", path, err)
+		log.Errorf(ctx, "error unmarshaling encounter config file %s: %v", path, err)
+		return err
 	}
 	if cfg.Encounters == nil {
 		cfg.Encounters = make(map[string]*configTypes.EncounterConfig)
@@ -72,6 +77,8 @@ func (cfg *BotConfig) parseEncounterConfig(path string, data []byte) error {
 }
 
 func (cfg *BotConfig) parseConfigFile(path string, info os.FileInfo, err error) error {
+	ctx := context.Background()
+
 	if err != nil {
 		return err
 	}
@@ -81,40 +88,42 @@ func (cfg *BotConfig) parseConfigFile(path string, info os.FileInfo, err error) 
 		return nil
 	}
 
-	file, e := os.ReadFile(path)
-	if e != nil {
-		return fmt.Errorf("error reading config file %s: %s", path, e)
+	file, err := os.ReadFile(filepath.Clean(path))
+	if err != nil {
+		return fmt.Errorf("error reading config file %s: %s", path, err)
 	}
 
 	lastDirInPath := filepath.Base(filepath.Dir(path))
-	switch {
-	case lastDirInPath == "menus":
-		if e = cfg.parseMenuConfig(path, file); e != nil {
-			return e
+	switch lastDirInPath {
+	case "menus":
+		if err := cfg.parseMenuConfig(ctx, path, file); err != nil {
+			return err
 		}
-	case lastDirInPath == "ultimates":
-	case lastDirInPath == "savages":
-	case lastDirInPath == "extremes":
-		if e = cfg.parseEncounterConfig(path, file); e != nil {
-			return e
+	case "ultimates":
+	case "savages":
+	case "extremes":
+		if err := cfg.parseEncounterConfig(ctx, path, file); err != nil {
+			return err
 		}
 	default:
+		log.Errorf(ctx, "unknown config file type for file %s", path)
 		return fmt.Errorf("unknown config file type for file %s", path)
 	}
 
 	return nil
 }
 
-func (cfg *BotConfig) Init(configDir string) {
-	e := filepath.Walk(configDir, cfg.parseConfigFile)
-	if e != nil {
-		panic(fmt.Errorf("error walking config dir: %s", e))
+func (cfg *BotConfig) Init(ctx context.Context, configDir string) {
+	err := filepath.Walk(configDir, cfg.parseConfigFile)
+	if err != nil {
+		log.Errorf(ctx, "error walking config dir: %s", err)
 	}
 }
 
 func main() {
+	ctx := context.Background()
 	cfg := &BotConfig{}
-	cfg.Init("./config/data")
+	cfg.Init(ctx, "./config/data")
 
 	fmt.Printf("Loaded BotConfig: %+v\n", cfg)
 }
