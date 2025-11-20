@@ -7,7 +7,7 @@ type EncounterRole struct {
 }
 
 type EncounterConfig struct {
-	IDs        []string        `json:"ids"`
+	IDs        []int           `json:"ids"`
 	Name       string          `json:"name"`
 	Difficulty Difficulty      `json:"difficulty"`
 	Roles      []EncounterRole `json:"roles"`
