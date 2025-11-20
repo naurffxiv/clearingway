@@ -32,12 +32,12 @@ type MenuConfigButton struct {
 }
 
 type MenuConfigRole struct {
-	Name        string             `json:"name"`
+	Name        string   `json:"name"`
 	Type        RoleType `json:"type,omitempty"`
-	Color       string             `json:"color,omitempty"`
-	Hoist       bool               `json:"hoist,omitempty"`
-	Mention     bool               `json:"mention,omitempty"`
-	Description string             `json:"description,omitempty"`
+	Color       string   `json:"color,omitempty"`
+	Hoist       bool     `json:"hoist,omitempty"`
+	Mention     bool     `json:"mention,omitempty"`
+	Description string   `json:"description,omitempty"`
 }
 
 type MenuConfig struct {
