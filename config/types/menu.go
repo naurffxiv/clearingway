@@ -26,18 +26,18 @@ const (
 
 type MenuConfigButton struct {
 	Label    string               `json:"label"`
-	Style    MenuConfigButonStyle `json:"style"`
 	MenuName string               `json:"menuName"`
 	MenuType string               `json:"menuType"`
+	Style    MenuConfigButonStyle `json:"style"`
 }
 
 type MenuConfigRole struct {
 	Name        string   `json:"name"`
 	Type        RoleType `json:"type,omitempty"`
 	Color       string   `json:"color,omitempty"`
+	Description string   `json:"description,omitempty"`
 	Hoist       bool     `json:"hoist,omitempty"`
 	Mention     bool     `json:"mention,omitempty"`
-	Description string   `json:"description,omitempty"`
 }
 
 type MenuConfig struct {
@@ -49,9 +49,9 @@ type MenuConfig struct {
 	ImageURL     string             `json:"imageUrl,omitempty"`
 	Fields       []MenuConfigField  `json:"fields,omitempty"`
 	Buttons      []MenuConfigButton `json:"buttons,omitempty"`
-	MultiSelect  bool               `json:"multiSelect,omitempty"`
-	RequireClear bool               `json:"requireClear,omitempty"`
 	Difficulties []Difficulty       `json:"difficulties,omitempty"`
 	RoleType     []string           `json:"roleType,omitempty"`
 	Roles        []MenuConfigRole   `json:"roles,omitempty"`
+	MultiSelect  bool               `json:"multiSelect,omitempty"`
+	RequireClear bool               `json:"requireClear,omitempty"`
 }
