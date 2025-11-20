@@ -1,0 +1,10 @@
+{
+  "name": "menuColor",
+  "type": "menuEncounter",
+  "title": "Name Color Roles",
+  "description": "Toggle a role that changes your name color to one that matches the theme of a specific encounter. You must have the corresponding Cleared Role.",
+  "roleType": ["Name Color"],
+  "requireClear": true,
+  "difficulties": ["Ultimate"]
+}
+

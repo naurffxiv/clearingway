@@ -1,0 +1,42 @@
+{
+  "name": "cleared",
+  "type": "menuMain",
+  "title": "__Cleared Roles Menu__",
+  "description": "Use the buttons below to obtain roles that required a specific `Cleared Role`.",
+  "thumbnailUrl": "https://github.com/naurffxiv/assets/blob/main/Discord%20Files/Misc%20Images/naur_icon_optimized2.gif?raw=true",
+  "fields": [
+    {
+      "name": "Name Color Button",
+      "value": "Use this button to add or remove a specific role that changes your name color in NAUR to one that matches the theme of a specific encounter"
+    },
+    {
+      "name": "Reclear Roles Button",
+      "value": "Use this button to add or remove specific mentionable Reclear Roles for a specific duty. These roles are used to ping people for Reclear parties."
+    },
+    {
+      "name": "C4X Roles Button",
+      "value": "Use this button to add or remove specific mentionable C4X Roles for a specific duty. These roles are used to ping people for clear parties."
+    }
+  ],
+  "buttons": [
+    {
+      "label": "Name Colors",
+      "style": 1,
+      "menuName": "menuColor",
+      "menuType": "menuEncounter"
+    },
+    {
+      "label": "Reclear Roles",
+      "style": 1,
+      "menuName": "menuReclear",
+      "menuType": "menuEncounter"
+    },
+    {
+      "label": "C4X Roles",
+      "style": 1,
+      "menuName": "menuHelper",
+      "menuType": "menuEncounter"
+    }
+  ]
+}
+
