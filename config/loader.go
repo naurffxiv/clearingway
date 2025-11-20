@@ -14,16 +14,16 @@ type BotConfig struct {
 	Menus      map[string]*configTypes.MenuConfig      `json:"menus"`
 }
 
-func (bc *BotConfig) GetEncounters() map[string]*configTypes.EncounterConfig {
-	return bc.Encounters
+func (cfg *BotConfig) GetEncounters() map[string]*configTypes.EncounterConfig {
+	return cfg.Encounters
 }
 
-func (bc *BotConfig) GetMenus() map[string]*configTypes.MenuConfig {
-	return bc.Menus
+func (cfg *BotConfig) GetMenus() map[string]*configTypes.MenuConfig {
+	return cfg.Menus
 }
 
-func (bc *BotConfig) GetEncounterByID(id int) *configTypes.EncounterConfig {
-	for _, encounter := range bc.Encounters {
+func (cfg *BotConfig) GetEncounterByID(id int) *configTypes.EncounterConfig {
+	for _, encounter := range cfg.Encounters {
 		for _, encounterID := range encounter.IDs {
 			if encounterID == id {
 				return encounter
@@ -33,45 +33,45 @@ func (bc *BotConfig) GetEncounterByID(id int) *configTypes.EncounterConfig {
 	return nil
 }
 
-func (bc *BotConfig) GetEncounterByName(name string) *configTypes.EncounterConfig {
-	if encounter, ok := bc.Encounters[name]; ok {
+func (cfg *BotConfig) GetEncounterByName(name string) *configTypes.EncounterConfig {
+	if encounter, ok := cfg.Encounters[name]; ok {
 		return encounter
 	}
 	return nil
 }
 
-func (bc *BotConfig) GetMenuByName(name string) *configTypes.MenuConfig {
-	if menu, ok := bc.Menus[name]; ok {
+func (cfg *BotConfig) GetMenuByName(name string) *configTypes.MenuConfig {
+	if menu, ok := cfg.Menus[name]; ok {
 		return menu
 	}
 	return nil
 }
 
-func (bc *BotConfig) parseMenuConfig(path string, data []byte) error {
+func (cfg *BotConfig) parseMenuConfig(path string, data []byte) error {
 	var menuConfig configTypes.MenuConfig
 	if err := json.Unmarshal(data, &menuConfig); err != nil {
 		return fmt.Errorf("error unmarshaling menu config file %s: %w", path, err)
 	}
-	if bc.Menus == nil {
-		bc.Menus = make(map[string]*configTypes.MenuConfig)
+	if cfg.Menus == nil {
+		cfg.Menus = make(map[string]*configTypes.MenuConfig)
 	}
-	bc.Menus[menuConfig.Name] = &menuConfig
+	cfg.Menus[menuConfig.Name] = &menuConfig
 	return nil
 }
 
-func (bc *BotConfig) parseEncounterConfig(path string, data []byte) error {
+func (cfg *BotConfig) parseEncounterConfig(path string, data []byte) error {
 	var encounterConfig configTypes.EncounterConfig
 	if err := json.Unmarshal(data, &encounterConfig); err != nil {
 		return fmt.Errorf("error unmarshaling encounter config file %s: %w", path, err)
 	}
-	if bc.Encounters == nil {
-		bc.Encounters = make(map[string]*configTypes.EncounterConfig)
+	if cfg.Encounters == nil {
+		cfg.Encounters = make(map[string]*configTypes.EncounterConfig)
 	}
-	bc.Encounters[encounterConfig.Name] = &encounterConfig
+	cfg.Encounters[encounterConfig.Name] = &encounterConfig
 	return nil
 }
 
-func (bc *BotConfig) parseConfigFile(path string, info os.FileInfo, err error) error {
+func (cfg *BotConfig) parseConfigFile(path string, info os.FileInfo, err error) error {
 	if err != nil {
 		return err
 	}
@@ -89,13 +89,13 @@ func (bc *BotConfig) parseConfigFile(path string, info os.FileInfo, err error) e
 	lastDirInPath := filepath.Base(filepath.Dir(path))
 	switch {
 	case lastDirInPath == "menus":
-		if e = bc.parseMenuConfig(path, file); e != nil {
+		if e = cfg.parseMenuConfig(path, file); e != nil {
 			return e
 		}
 	case lastDirInPath == "ultimates":
 	case lastDirInPath == "savages":
 	case lastDirInPath == "extremes":
-		if e = bc.parseEncounterConfig(path, file); e != nil {
+		if e = cfg.parseEncounterConfig(path, file); e != nil {
 			return e
 		}
 	default:
@@ -105,16 +105,16 @@ func (bc *BotConfig) parseConfigFile(path string, info os.FileInfo, err error) e
 	return nil
 }
 
-func (bc *BotConfig) Init(configDir string) {
-	e := filepath.Walk(configDir, bc.parseConfigFile)
+func (cfg *BotConfig) Init(configDir string) {
+	e := filepath.Walk(configDir, cfg.parseConfigFile)
 	if e != nil {
 		panic(fmt.Errorf("error walking config dir: %s", e))
 	}
 }
 
 func main() {
-	bc := &BotConfig{}
-	bc.Init("./config/data")
+	cfg := &BotConfig{}
+	cfg.Init("./config/data")
 
-	fmt.Printf("Loaded BotConfig: %+v\n", bc)
+	fmt.Printf("Loaded BotConfig: %+v\n", cfg)
 }
