@@ -5,9 +5,9 @@
   "description": "Toggle several server related roles.",
   "multiSelect": true,
   "roles": [
-    { "name": "Server Ping", "color": 15794175 },
-    { "name": "Vote Ping", "color": 15794175 },
-    { "name": "Event Ping", "color": 15794175 }
+    { "name": "Server Ping", "color": "0xF0FFFF" },
+    { "name": "Vote Ping", "color": "0xF0FFFF" },
+    { "name": "Event Ping", "color": "0xF0FFFF" }
   ]
 }
 
