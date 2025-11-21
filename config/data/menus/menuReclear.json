@@ -1,0 +1,11 @@
+{
+  "name": "menuReclear",
+  "type": "menuEncounter",
+  "title": "Reclear Roles",
+  "description": "Toggle mentionable reclear roles for a specific encounter. You must have the corresponding Cleared Role.",
+  "roleType": ["Reclear"],
+  "multiSelect": true,
+  "requireClear": true,
+  "difficulties": ["Ultimate", "Savage", "Extreme"]
+}
+

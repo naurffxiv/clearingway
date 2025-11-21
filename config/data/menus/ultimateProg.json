@@ -1,0 +1,10 @@
+{
+  "name": "ultimateProg",
+  "type": "menuEncounter",
+  "title": "Ultimate Prog Roles",
+  "description": "Toggle mentionable roles for ultimate prog.",
+  "roleType": ["Prog"],
+  "multiSelect": true,
+  "difficulties": ["Ultimate"]
+}
+

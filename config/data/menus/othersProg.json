@@ -1,0 +1,13 @@
+{
+  "name": "othersProg",
+  "type": "menuEncounter",
+  "title": "Other Prog-related Roles",
+  "description": "Toggle mentionable non-specific prog roles.",
+  "multiSelect": true,
+  "roles": [
+    { "name": "BiS Farm" },
+    { "name": "Ultimate Unlock" },
+    { "name": "Mercenary" }
+  ]
+}
+

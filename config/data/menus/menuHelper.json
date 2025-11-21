@@ -1,0 +1,11 @@
+{
+  "name": "menuHelper",
+  "type": "menuEncounter",
+  "title": "C4X Roles",
+  "description": "Toggle mentionable C4X Roles for a specific encounter. You must have the corresponding Cleared Role.",
+  "roleType": ["C4X"],
+  "multiSelect": true,
+  "requireClear": true,
+  "difficulties": ["Ultimate", "Savage", "Extreme"]
+}
+
