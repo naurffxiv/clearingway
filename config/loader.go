@@ -113,13 +113,14 @@ func (cfg *BotConfig) Init(configDir string) error {
 	return nil
 }
 
-func main() {
-	cfg := &BotConfig{}
-	err := cfg.Init("./config/data")
-	if err != nil {
-		fmt.Printf("Error initializing BotConfig: %s\n", err)
-		return
-	}
-
-	fmt.Printf("Loaded BotConfig: %+v\n", cfg)
-}
+// func main() {
+//	cfg := &BotConfig{}
+//	err := cfg.Init("./config/data")
+//	if err != nil {
+//		fmt.Printf("Error initializing BotConfig: %s\n", err)
+//		return
+//	}
+//
+//	marshalWithIndent, _ := json.MarshalIndent(cfg, "", "  ")
+//	fmt.Printf("BotConfig JSON:\n%s\n", string(marshalWithIndent))
+//}
