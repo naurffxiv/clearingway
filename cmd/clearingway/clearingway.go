@@ -3,11 +3,11 @@ package main
 import (
 	"clearingway/internal/clearingway"
 	"clearingway/internal/env"
+	"log"
 	"os"
 	"os/signal"
 	"syscall"
 )
-import "log"
 
 func main() {
 	loadedEnv, err := env.LoadEnv()
