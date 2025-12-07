@@ -30,8 +30,7 @@ func main() {
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
 	<-sc
 
-	err = clearingwayBot.Stop()
-	if err != nil {
+	if err = clearingwayBot.Stop(); err != nil {
 		log.Fatalf("Error stopping Clearingway bot: %v", err)
 	}
 }
