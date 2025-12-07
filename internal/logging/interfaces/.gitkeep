@@ -1,1 +1,0 @@
-The interfaces package is where we’ll keep all the abstraction for logging, a place to declare how logging functions work, but not where they’re implemented.

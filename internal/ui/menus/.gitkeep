@@ -1,1 +1,0 @@
-The Menus package contains the pure presentation builders, taking plain data and returning Discord ready payloads; embeds, components, content strings.

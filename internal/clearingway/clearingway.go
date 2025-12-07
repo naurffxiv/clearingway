@@ -1,36 +1,53 @@
 package clearingway
 
 import (
-	"github.com/naurffxiv/clearingway/internal/discord"
-	"github.com/naurffxiv/clearingway/internal/fflogs"
-	"github.com/naurffxiv/clearingway/internal/ffxiv"
-
-	trie "github.com/Vivino/go-autocomplete-trie"
+	"clearingway/internal/clearingway/config"
+	"clearingway/internal/discord"
+	"clearingway/internal/env"
 )
 
 type Clearingway struct {
-	Config  *Config
+	Config  *config.BotConfig
 	Discord *discord.Discord
-	Guilds  *Guilds
-	Fflogs  *fflogs.Fflogs
-	Ready   bool
-
-	AllWorlds        []string
-	AutoCompleteTrie *trie.Trie
 }
 
-func (c *Clearingway) Init() {
-	c.AllWorlds = ffxiv.AllWorlds()
-	c.AutoCompleteTrie = trie.New()
-	for _, world := range c.AllWorlds {
-		c.AutoCompleteTrie.Insert(world)
+func LoadConfig(path string) (*config.BotConfig, error) {
+	loadedConfig, err := config.Init(path)
+	if err != nil {
+		return nil, err
+	}
+	return loadedConfig, nil
+}
+
+func NewClearingway(env *env.Env) (*Clearingway, error) {
+	loadedConfig, err := LoadConfig(env.CONFIG_PATH)
+	if err != nil {
+		return nil, err
 	}
 
-	c.Guilds = &Guilds{Guilds: map[string]*Guild{}}
-
-	for _, configGuild := range c.Config.ConfigGuilds {
-		guild := &Guild{}
-		guild.Init(configGuild)
-		c.Guilds.Guilds[guild.Id] = guild
+	discordClient, err := discord.NewDiscord(env.DISCORD_TOKEN)
+	if err != nil {
+		return nil, err
 	}
+
+	return &Clearingway{
+		Config:  loadedConfig,
+		Discord: discordClient,
+	}, nil
+}
+
+func (cw *Clearingway) Start() error {
+	return cw.Discord.Session.Open()
+}
+
+func (cw *Clearingway) Stop() error {
+	return cw.Discord.Session.Close()
+}
+
+func (cw *Clearingway) GetConfig() *config.BotConfig {
+	return cw.Config
+}
+
+func (cw *Clearingway) GetDiscord() *discord.Discord {
+	return cw.Discord
 }
