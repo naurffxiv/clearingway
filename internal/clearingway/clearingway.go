@@ -11,16 +11,8 @@ type Clearingway struct {
 	Discord *discord.Discord
 }
 
-func LoadConfig(path string) (*config.BotConfig, error) {
-	loadedConfig, err := config.Init(path)
-	if err != nil {
-		return nil, err
-	}
-	return loadedConfig, nil
-}
-
 func NewClearingway(env *env.Env) (*Clearingway, error) {
-	loadedConfig, err := LoadConfig(env.CONFIG_PATH)
+	loadedConfig, err := config.Init(env.CONFIG_PATH)
 	if err != nil {
 		return nil, err
 	}
