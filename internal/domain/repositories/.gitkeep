@@ -1,1 +1,0 @@
-This is where interfaces are defined that describes how a domain asks for data to be loaded, saved or queried. Every interface should accept a `context.Context` and take and return domain types.

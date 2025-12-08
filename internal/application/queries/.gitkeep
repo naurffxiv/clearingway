@@ -1,1 +1,0 @@
-Queries hold the read-side use-cases, each building a read model by coordinating repositories and read-only ports.
