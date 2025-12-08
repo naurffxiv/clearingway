@@ -12,7 +12,7 @@ type Clearingway struct {
 }
 
 func NewClearingway(env *env.Env) (*Clearingway, error) {
-	loadedConfig, err := config.Init(env.CONFIG_PATH)
+	loadedConfig, err := config.InitBotConfig(env.CONFIG_PATH)
 	if err != nil {
 		return nil, err
 	}

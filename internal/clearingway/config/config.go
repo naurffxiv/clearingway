@@ -103,7 +103,7 @@ func (cfg *BotConfig) parseConfigFile(path string, info os.FileInfo, err error) 
 	return nil
 }
 
-func Init(configDir string) (*BotConfig, error) {
+func InitBotConfig(configDir string) (*BotConfig, error) {
 	cfg := &BotConfig{}
 	err := filepath.Walk(configDir, cfg.parseConfigFile)
 	if err != nil {
