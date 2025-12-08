@@ -1,0 +1,6 @@
+coverage.out
+.env
+clearingway
+!clearingway/
+.idea/
+bin/
