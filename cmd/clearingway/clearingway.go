@@ -17,7 +17,7 @@ func main() {
 	}
 
 	// ============= INITIALIZE/START CLEARINGWAY BOT ==============
-	clearingwayBot, err := clearingway.NewClearingway(loadedEnv)
+	clearingwayBot, err := clearingway.NewBotInstance(loadedEnv)
 	if err != nil {
 		log.Fatalf("Error initializing Clearingway bot: %v", err)
 	}
