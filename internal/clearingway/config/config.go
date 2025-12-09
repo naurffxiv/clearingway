@@ -45,17 +45,18 @@ func (cfg *BotConfig) GetMenuByName(name string) *MenuConfig {
 	return nil
 }
 
-func (cfg *BotConfig) parseMenuConfig(path string, data []byte) error {
-	var menuConfig MenuConfig
-	if err := json.Unmarshal(data, &menuConfig); err != nil {
-		return fmt.Errorf("error unmarshaling menu config file %s: %w", path, err)
-	}
-	if cfg.Menus == nil {
-		cfg.Menus = make(map[string]*MenuConfig)
-	}
-	cfg.Menus[menuConfig.Name] = &menuConfig
-	return nil
-}
+// TODO: Adjust to work with future menu state
+//func (cfg *BotConfig) parseMenuConfig(path string, data []byte) error {
+//	var menuConfig MenuConfig
+//	if err := json.Unmarshal(data, &menuConfig); err != nil {
+//		return fmt.Errorf("error unmarshaling menu config file %s: %w", path, err)
+//	}
+//	if cfg.Menus == nil {
+//		cfg.Menus = make(map[string]*MenuConfig)
+//	}
+//	cfg.Menus[menuConfig.Name] = &menuConfig
+//	return nil
+//}
 
 func (cfg *BotConfig) parseEncounterConfig(path string, data []byte) error {
 	var encounterConfig EncounterConfig
@@ -86,10 +87,11 @@ func (cfg *BotConfig) parseConfigFile(path string, info os.FileInfo, err error) 
 
 	lastDirInPath := filepath.Base(filepath.Dir(path))
 	switch lastDirInPath {
-	case "menus":
-		if err := cfg.parseMenuConfig(path, file); err != nil {
-			return err
-		}
+	// TODO: Adjust to work with future menu state
+	//case "menus":
+	//	if err := cfg.parseMenuConfig(path, file); err != nil {
+	//		return err
+	//	}
 	case "ultimates":
 	case "savages":
 	case "extremes":
