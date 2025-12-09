@@ -20,7 +20,7 @@ func NewBotInstance(env *env.Env) (*Clearingway, error) {
 	}
 
 	// ============== INITIALIZE DISCORD ==============
-	discordClient, err := discord.NewDiscordSession(env.DISCORD_TOKEN)
+	discordClient, err := discord.NewSession(env.DISCORD_TOKEN)
 	if err != nil {
 		return nil, err
 	}

@@ -6,8 +6,8 @@ type Discord struct {
 	Session *discordgo.Session
 }
 
-// NewDiscordSession - Initializes a new Discord session with the provided bot token
-func NewDiscordSession(token string) (*Discord, error) {
+// NewSession - Initializes a new Discord session with the provided bot token
+func NewSession(token string) (*Discord, error) {
 	// "Bot " prefix is required for bot authentication
 	session, err := discordgo.New("Bot " + token)
 	if err != nil {
