@@ -11,12 +11,15 @@ type Clearingway struct {
 	Discord *discord.Discord
 }
 
+// NewClearingway - Initializes a new Clearingway bot instance
 func NewClearingway(env *env.Env) (*Clearingway, error) {
+	// ============== LOAD CONFIG ==============
 	loadedConfig, err := config.InitBotConfig(env.CONFIG_PATH)
 	if err != nil {
 		return nil, err
 	}
 
+	// ============== INITIALIZE DISCORD ==============
 	discordClient, err := discord.NewDiscord(env.DISCORD_TOKEN)
 	if err != nil {
 		return nil, err
@@ -28,18 +31,22 @@ func NewClearingway(env *env.Env) (*Clearingway, error) {
 	}, nil
 }
 
+// Start - Opens the Discord session
 func (cw *Clearingway) Start() error {
 	return cw.Discord.Session.Open()
 }
 
+// Stop - Closes the Discord session
 func (cw *Clearingway) Stop() error {
 	return cw.Discord.Session.Close()
 }
 
+// GetConfig - Returns the bot configuration
 func (cw *Clearingway) GetConfig() *config.BotConfig {
 	return cw.Config
 }
 
+// GetDiscord - Returns the Discord client
 func (cw *Clearingway) GetDiscord() *discord.Discord {
 	return cw.Discord
 }

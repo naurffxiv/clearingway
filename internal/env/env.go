@@ -15,6 +15,7 @@ type Env struct {
 	ENV                  string
 }
 
+// LoadEnv - Loads environment variables from either the system or a .env file
 func LoadEnv() (*Env, error) {
 	// Check if we're in production mode
 	env := os.Getenv("ENV")
