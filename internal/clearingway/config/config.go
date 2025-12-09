@@ -63,6 +63,7 @@ func (cfg *BotConfig) parseConfigFile(path string, info os.FileInfo, err error) 
 		return nil
 	}
 
+	// Read config file
 	file, err := os.ReadFile(filepath.Clean(path))
 	if err != nil {
 		return fmt.Errorf("error reading config file %s: %s", path, err)
@@ -87,6 +88,8 @@ func (cfg *BotConfig) parseConfigFile(path string, info os.FileInfo, err error) 
 // InitBotConfig - Initializes the bot configuration by loading all config files from the specified directory
 func InitBotConfig(configDir string) (*BotConfig, error) {
 	cfg := &BotConfig{}
+	// This "walks" the config directory and processes each file using parseConfigFile
+	// "Walking" means it goes recursively through all subdirectories and files
 	err := filepath.Walk(configDir, cfg.parseConfigFile)
 	if err != nil {
 		return nil, err
