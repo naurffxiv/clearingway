@@ -26,8 +26,7 @@ const (
 func LoadEnv() (*Env, error) {
 	// Attempt to load .env file (ignore error if it doesn't exist)
 	// This will not override existing environment variables
-	if err := godotenv.Load(); err != nil {
-	}
+	_ = godotenv.Load()
 
 	// -------------- LOAD ENV VARIABLES --------------
 	// Load ENV, validate, and convert to EnvType
