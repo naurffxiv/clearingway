@@ -12,21 +12,38 @@ type Env struct {
 	FFLOGS_CLIENT_ID     string
 	FFLOGS_CLIENT_SECRET string
 	DISCORD_TOKEN        string
-	ENV                  string
+	ENV                  EnvType
 }
+
+type EnvType string
+
+const (
+	Development EnvType = "development"
+	Production  EnvType = "production"
+)
 
 // LoadEnv - Loads environment variables from either the system or a .env file
 func LoadEnv() (*Env, error) {
-	// Check if we're in production mode
-	env := os.Getenv("ENV")
-	if env != "production" {
-		// In development, load from .env file
-		if err := godotenv.Load(); err != nil {
-			return nil, err
-		}
+	if err := godotenv.Load(); err != nil {
 	}
 
 	// -------------- LOAD ENV VARIABLES --------------
+	// Load ENV, validate, and convert to EnvType
+	envTypeStr, ok := os.LookupEnv("ENV")
+	if !ok {
+		return nil, errors.New("ENV not set in environment")
+	}
+	var envType EnvType
+	switch envTypeStr {
+	case string(Development):
+		envType = Development
+	case string(Production):
+		envType = Production
+	default:
+		return nil, errors.New("invalid ENV value; must be 'development' or 'production'")
+	}
+
+	// Load other required env variables
 	configPath, ok := os.LookupEnv("CONFIG_PATH")
 	if !ok {
 		return nil, errors.New("CONFIG_PATH not set in environment")
@@ -50,6 +67,6 @@ func LoadEnv() (*Env, error) {
 		FFLOGS_CLIENT_ID:     fflogsClientId,
 		FFLOGS_CLIENT_SECRET: fflogsClientSecret,
 		DISCORD_TOKEN:        discordToken,
-		ENV:                  env,
+		ENV:                  envType,
 	}, nil
 }
