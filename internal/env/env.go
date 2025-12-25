@@ -24,6 +24,8 @@ const (
 
 // LoadEnv - Loads environment variables from either the system or a .env file
 func LoadEnv() (*Env, error) {
+	// Attempt to load .env file (ignore error if it doesn't exist)
+	// This will not override existing environment variables
 	if err := godotenv.Load(); err != nil {
 	}
 
