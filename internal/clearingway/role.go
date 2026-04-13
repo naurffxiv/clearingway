@@ -68,8 +68,7 @@ func (r *Role) Ensure(guildId string, s *discordgo.Session, existingRoles []*dis
 	}
 
 	roleParams := &discordgo.RoleParams{
-		Name:  r.Name,
-		Color: &r.Color,
+		Name:  r.Name
 	}
 
 	if r.Hoist {
@@ -88,7 +87,7 @@ func (r *Role) Ensure(guildId string, s *discordgo.Session, existingRoles []*dis
 		existingRole = newRole
 	}
 
-	if existingRole.Color != r.Color || existingRole.Name != r.Name {
+	if existingRole.Name != r.Name {
 		newRole, err := s.GuildRoleEdit(guildId, existingRole.ID, roleParams)
 		if err != nil {
 			return fmt.Errorf("Could not ensure role %v: %w.\n", r.Name, err)
