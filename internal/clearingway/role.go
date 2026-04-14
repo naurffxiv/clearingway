@@ -69,6 +69,7 @@ func (r *Role) Ensure(guildId string, s *discordgo.Session, existingRoles []*dis
 
 	roleParams := &discordgo.RoleParams{
 		Name:  r.Name,
+		Color: &r.Color,
 	}
 
 	if r.Hoist {
