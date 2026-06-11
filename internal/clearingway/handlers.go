@@ -238,6 +238,10 @@ var ReclearCommand = &discordgo.ApplicationCommand{
 					Name:  "FRU",
 					Value: "Futures Rewritten (Ultimate)",
 				},
+				{
+					Name:  "UMAD",
+					Value: "Dancing Mad (Ultimate)",
+				},
 			},
 		},
 	},
@@ -276,6 +280,10 @@ var NameColorCommand = &discordgo.ApplicationCommand{
 				{
 					Name:  "FRU",
 					Value: "Futures Rewritten (Ultimate)",
+				},
+				{
+					Name:  "UMAD",
+					Value: "Dancing Mad (Ultimate)",
 				},
 			},
 		},

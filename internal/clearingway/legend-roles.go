@@ -37,6 +37,8 @@ func legendRoleString(clearedEncounters *Encounters, rankings *fflogs.Rankings) 
 			"=3", "Cleared the following three Ultimate fights:\n",
 			"=4", "Cleared the following four Ultimate fights:\n",
 			"=5", "Cleared the following five Ultimate fights:\n",
+			"=6", "Cleared the following six Ultimate fights:\n",
+			"=7", "Cleared the following seven Ultimate fights:\n",
 			"other", "Cleared the following Ultimate fights:\n",
 		),
 	)
@@ -137,7 +139,20 @@ func LegendRoles() *Roles {
 					return true, output
 				}
 
-				return false, "Did not clear all six ultimates."
+				return false, "Did not clear only six ultimates."
+			},
+		},
+		{
+			Name: "The Septuple Legend", Color: 0x3498db,
+			Description: "Cleared all seven ultimates.",
+			ShouldApply: func(opts *ShouldApplyOpts) (bool, string) {
+				clearedEncounters := opts.Encounters.Clears(opts.Rankings)
+				if len(clearedEncounters.Encounters) == 7 {
+					output := legendRoleString(clearedEncounters, opts.Rankings)
+					return true, output
+				}
+
+				return false, "Did not clear all seven ultimates."
 			},
 		},
 		{

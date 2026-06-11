@@ -270,6 +270,25 @@ guilds:
   guildId: 1172230157776466050
   channelId: 1172348608671133760
   encounters:
+  - ids: [1085]
+    name: "Dancing Mad (Ultimate)"
+    defaultRoles: false
+    totalWeaponsAvailable: 21
+    the: "Mad"
+    difficulty: "Ultimate"
+    roles:
+      - name: "UMAD Cleared"
+        type: "Cleared"
+        color: 0xfc97f8
+      - name: "UMAD Reclear"
+        type: "Reclear"
+      - name: "UMAD Color"
+        type: "Name Color"
+        color: 0xfc97f8
+      - name: "UMAD C4X"
+        type: "C4X"
+      - name: "UMAD Prog"
+        type: "Prog"
   - ids: [1079]
     name: "Futures Rewritten (Ultimate)"
     defaultRoles: false
@@ -477,6 +496,10 @@ guilds:
     type: "Limbo"
     encounterName: "Futures Rewritten (Ultimate)"
     skip: true
+  - from: "Limbo"
+    type: "Limbo"
+    encounterName: "Dancing Mad (Ultimate)"
+    skip: true
   - from: "NA's Comfiest"
     skip: true
   - from: "The Comfy Legend"
@@ -506,6 +529,10 @@ guilds:
     type: "Complete"
     encounterName: "Futures Rewritten (Ultimate)"
     to: "Roommate"
+  - from: "Complete"
+    type: "Complete"
+    encounterName: "Dancing Mad (Ultimate)"
+    to: "Mad"
   menuOrder:
     - name: "roleAssignment"
       menus:

@@ -58,6 +58,14 @@ var UltimateEncounters = &Encounters{
 			TotalWeaponsAvailable: 21,
 			The:                   "Roommate",
 		},
+		{
+			Name:                  "Dancing Mad (Ultimate)",
+			Ids:                   []int{1085},
+			Difficulty:            "Ultimate",
+			DefaultRoles:          false,
+			TotalWeaponsAvailable: 21,
+			The:                   "Mad",
+		},
 	},
 }
 
