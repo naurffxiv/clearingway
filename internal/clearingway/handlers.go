@@ -239,7 +239,7 @@ var ReclearCommand = &discordgo.ApplicationCommand{
 					Value: "Futures Rewritten (Ultimate)",
 				},
 				{
-					Name:  "DMU",
+					Name:  "UMAD",
 					Value: "Dancing Mad (Ultimate)",
 				},
 			},
@@ -282,7 +282,7 @@ var NameColorCommand = &discordgo.ApplicationCommand{
 					Value: "Futures Rewritten (Ultimate)",
 				},
 				{
-					Name:  "DMU",
+					Name:  "UMAD",
 					Value: "Dancing Mad (Ultimate)",
 				},
 			},

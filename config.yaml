@@ -277,17 +277,17 @@ guilds:
     the: "Mad"
     difficulty: "Ultimate"
     roles:
-      - name: "DMU Cleared"
+      - name: "UMAD Cleared"
         type: "Cleared"
         color: 0xfc97f8
-      - name: "DMU Reclear"
+      - name: "UMAD Reclear"
         type: "Reclear"
-      - name: "DMU Color"
+      - name: "UMAD Color"
         type: "Name Color"
         color: 0xfc97f8
-      - name: "DMU C4X"
+      - name: "UMAD C4X"
         type: "C4X"
-      - name: "DMU Prog"
+      - name: "UMAD Prog"
         type: "Prog"
   - ids: [1079]
     name: "Futures Rewritten (Ultimate)"
