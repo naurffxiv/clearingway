@@ -15,9 +15,10 @@ var lodestoneUrl = "https://na.finalfantasyxiv.com/lodestone"
 
 func SetCharacterLodestoneID(c *ffxiv.Character) error {
 	if c.LodestoneID != 0 {
+		fmt.Printf("[DEBUG] SetCharacterLodestoneID: skipping search, already set to %d (%s/character/%d/)\n",
+			c.LodestoneID, lodestoneUrl, c.LodestoneID)
 		return nil
 	}
-	fmt.Printf("Lodestone ID not set for %s (%s), checking the Lodestone...\n", c.Name(), c.World)
 
 	collector := colly.NewCollector(colly.Async(true))
 	collector.SetRequestTimeout(30 * time.Second)
@@ -29,6 +30,11 @@ func SetCharacterLodestoneID(c *ffxiv.Character) error {
 		url.QueryEscape(c.Name()),
 		c.World,
 	)
+	fullSearchUrl := lodestoneUrl + searchUrl
+
+	fmt.Printf("[DEBUG] SetCharacterLodestoneID:\n")
+	fmt.Printf("  User inputs: firstName=%q, lastName=%q, world=%q\n", c.FirstName, c.LastName, c.World)
+	fmt.Printf("  Search URL: %s\n", fullSearchUrl)
 
 	collector.OnHTML(".ldst__window .entry", func(e *colly.HTMLElement) {
 		name := e.ChildText(".entry__name")
@@ -43,6 +49,8 @@ func SetCharacterLodestoneID(c *ffxiv.Character) error {
 				errors = append(errors, fmt.Errorf("Could not parse lodestone URL: %w", err))
 			}
 			charIDs = append(charIDs, charID)
+			fmt.Printf("  Match found: name=%q, link=%q, characterID=%d, URL=%s/character/%d/\n",
+				name, linkText, charID, lodestoneUrl, charID)
 		}
 	})
 
@@ -83,6 +91,7 @@ func SetCharacterLodestoneID(c *ffxiv.Character) error {
 	}
 
 	if len(charIDs) == 0 {
+		fmt.Printf("  Result: no matching characters found\n")
 		return fmt.Errorf(
 			"No character found on the Lodestone for `%v (%v)`! If you recently renamed yourself or server transferred it can take up to a day for this to be reflected on the Lodestone; please try again later.",
 			c.Name(),
@@ -90,6 +99,7 @@ func SetCharacterLodestoneID(c *ffxiv.Character) error {
 		)
 	}
 	if len(charIDs) > 1 {
+		fmt.Printf("  Result: %d matching characters found: %v\n", len(charIDs), charIDs)
 		return fmt.Errorf(
 			"Too many characters found for name %s (%s)! Ensure it is exactly your character name.\nAlternatively, import your character to FFlogs at https://www.fflogs.com/lodestone/import to circumvent a Lodestone search.",
 			c.Name(),
@@ -98,6 +108,8 @@ func SetCharacterLodestoneID(c *ffxiv.Character) error {
 	}
 
 	c.LodestoneID = charIDs[0]
+	fmt.Printf("  Result: selected characterID=%d, URL=%s/character/%d/\n",
+		c.LodestoneID, lodestoneUrl, c.LodestoneID)
 
 	return nil
 }
