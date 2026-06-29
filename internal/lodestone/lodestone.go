@@ -126,7 +126,16 @@ func CharacterIsOwnedByDiscordUser(c *ffxiv.Character, discordId string) (bool, 
 		return false, buildError(errors)
 	}
 
-	if !strings.Contains(bio, c.LodestoneSlug(discordId)) {
+	characterUrl := lodestoneUrl + fmt.Sprintf("/character/%d/", c.LodestoneID)
+	expectedCode := c.LodestoneSlug(discordId)
+	fmt.Printf("[DEBUG] Verifying ownership:\n")
+	fmt.Printf("  Discord user ID: %s\n", discordId)
+	fmt.Printf("  User inputs: firstName=%q, lastName=%q, world=%q\n", c.FirstName, c.LastName, c.World)
+	fmt.Printf("  Lodestone URL: %s\n", characterUrl)
+	fmt.Printf("  Expected code: %s\n", expectedCode)
+	fmt.Printf("  Profile description: %q\n", bio)
+
+	if !strings.Contains(bio, expectedCode) {
 		return false, nil
 	}
 
