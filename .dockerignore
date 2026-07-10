@@ -1,5 +1,8 @@
-# flyctl launch added from .gitignore
-**/coverage.out
-**/clearingway
-!**/clearingway
+coverage.out
+/clearingway
+.env
+.env.*
+!.env.example
 fly.toml
+.git
+.github

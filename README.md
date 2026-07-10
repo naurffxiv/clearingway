@@ -15,11 +15,36 @@ fflogs and tries to assign them a few roles:
 
 It can be configured with the `config.yaml` file found in this repository.
 
-## Running
+## Development
 
-Clearingway requires the following environment variables to start:
+Clearingway runs in Docker for local development. You only need [Docker](https://docs.docker.com/get-docker/) and Docker Compose installed.
 
-* **DISCORD_TOKEN**: You have to create a [Discord bot for Clearingway](https://discord.com/developers/applications). Once you've done so, you can add the bot token here.
-* **FFLOGS_CLIENT_ID**: The client ID from [fflogs](https://www.fflogs.com/api/clients/).
-* **FFLOGS_CLIENT_SECRET**: The client secret from [fflogs](https://www.fflogs.com/api/clients/).
+### Setup
 
+1. Copy `.env.example` to `.env` and fill in your credentials:
+
+   * **DISCORD_TOKEN**: Create a [Discord bot for Clearingway](https://discord.com/developers/applications) and add the bot token here.
+   * **FFLOGS_CLIENT_ID**: The client ID from [fflogs](https://www.fflogs.com/api/clients/).
+   * **FFLOGS_CLIENT_SECRET**: The client secret from [fflogs](https://www.fflogs.com/api/clients/).
+
+2. Start the bot:
+
+   ```bash
+   make dev
+   ```
+
+   This builds the image and runs the bot in the foreground so logs appear in your terminal.
+
+### Common commands
+
+| Command | Description |
+| --- | --- |
+| `make dev` | Build and run in the foreground |
+| `make up` | Build and run in the background |
+| `make down` | Stop the bot |
+| `make logs` | Follow container logs |
+| `make watch` | Rebuild and restart automatically when code changes |
+| `make build` | Build the image without starting |
+| `make test` | Run the test suite |
+
+`config.yaml` is mounted into the container, so you can edit guild configuration without rebuilding the image. After Go code changes, run `make dev` again or use `make watch` to rebuild automatically.

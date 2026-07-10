@@ -1,9 +1,9 @@
-FROM golang:1.23.1 AS builder
+FROM golang:1.25 AS builder
 WORKDIR /src
 COPY go.mod go.sum /src/
 RUN go mod download
 COPY . /src
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 make clearingway
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o clearingway .
 
 FROM gcr.io/distroless/static-debian12
 WORKDIR /clearingway
