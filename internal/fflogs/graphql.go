@@ -185,6 +185,9 @@ func (f *Fflogs) GetRankingsForCharacter(rankingsToGet []*RankingToGet, char *ff
 		if partition == "nonstandard" {
 			ranking.Nonstandard = true
 		}
+		if rawRanking == nil {
+			continue // fflogs returns nil for rankings that don't exist
+		}
 		err = json.Unmarshal(*rawRanking, ranking)
 		if err != nil {
 			return nil, fmt.Errorf("Could not unmarshal JSON: %w", err)
